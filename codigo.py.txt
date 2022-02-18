@@ -1,0 +1,2 @@
+valor_teste = input('Digite o valor teste:)
+print(valor_teste + 1)
