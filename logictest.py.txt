@@ -1,0 +1,32 @@
+valor_teste = input('Digite o valor teste:)
+print(valor_teste + 1)
+
+nomes = ['weiller','fernanda']
+print(nomes.index('weiller'))
+
+nome = ['tartaruga','cachorro']
+print(nome[0])
+
+coisas = ['porta retrato','dor']
+print(coisas.index('dor'))
+
+ansiedade = ['dores','angustia']
+print(ansiedade[0])
+
+
+
+#Crie um programa que recebe um número e calcula uma fatorial (acrescentei repetiçoes caso não estivesse dentro do valor esperado.)
+
+numero = int(input('Digite um número:'))
+
+acerto = False
+while acerto == False:
+  if numero < 0:
+    print ('Número inválido')
+    numero = int(input('Digite um número:'))
+  else:
+   acerto = True
+   fatorial = 1
+   for num in range(1,numero +1):
+    fatorial = fatorial * num
+    print(fatorial)
