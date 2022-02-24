@@ -7,6 +7,7 @@ WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Solar System Simulation')
 
 GRAY = (79, 79, 79)
+YELLOW = (255, 255, 0)
 #Loop infinito com o intuito de observar as mudanças via coding
 
 class Planet:
@@ -40,7 +41,8 @@ def master():
     acerto = True
     clock = pygame.time.Clock()
 
-    sun = Planet(0, 0,)
+    sun = Planet(0, 0, 30, YELLOW, 1.98892 * 10**30)
+    sun.sun = True
 
     while acerto:
         clock.tick(100)
