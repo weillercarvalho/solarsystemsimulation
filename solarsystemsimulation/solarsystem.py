@@ -2,12 +2,16 @@ import pygame
 import math
 pygame.init()
 #Dimensões da Tela
-WIDTH, HEIGHT = 800, 800
+WIDTH, HEIGHT = 1440, 800
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Solar System Simulation')
 
 GRAY = (79, 79, 79)
 YELLOW = (255, 255, 0)
+BLUE = (100, 149, 237)
+RED = (188, 39, 50)
+DARK_GOLDEN = (205,149,12)
+CORN_SILK = (255,248,220)
 #Loop infinito com o intuito de observar as mudanças via coding
 
 class Planet:
@@ -44,6 +48,16 @@ def master():
     sun = Planet(0, 0, 30, YELLOW, 1.98892 * 10**30)
     sun.sun = True
 
+    earth = Planet(-1 * Planet.AU, 0, 16, BLUE, 5.9742 * 10**24)
+
+    mars = Planet(-1.524 * Planet.AU, 0, 12, RED, 6.39 * 10**23)
+
+    mars2 = Planet(-1.524 * Planet.AU, 0, 15, CORN_SILK, 6.39 * 10**23)
+
+    mercury = Planet(0.387 * Planet.AU, 0, 10, DARK_GOLDEN, 3.30 * 10**23)
+
+    planets = [sun, earth, mars2, mercury, mars]
+
     while acerto:
         clock.tick(100)
         #WIN.fill(GRAY)
@@ -52,9 +66,12 @@ def master():
         for event in pygame.event.get():
             if event.type ==  pygame.QUIT:
                 acerto = False
+        
+        for planet in planets:
+            planet.draw(WIN)
+
+        pygame.display.update()    
 
     pygame.quit()
 
 master()
-
-#continue
