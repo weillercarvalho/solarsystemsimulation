@@ -12,7 +12,9 @@ BLUE = (100, 149, 237)
 RED = (188, 39, 50)
 DARK_GOLDEN = (205,149,12)
 CORN_SILK = (255,248,220)
-#Loop infinito com o intuito de observar as mudanças via coding
+GREEN = (127,255,0)
+WHITE = (255,255,255)
+
 
 class Planet:
     #Distância Astronômica (Multiplicado por 1000 pra fazer a conversão de quilômetros para metros)
@@ -41,6 +43,11 @@ class Planet:
         y = self.y * self.SCALE + HEIGHT / 2 #Similar ao superior a diferença é que o eixo Y (ordenadas) é representado pela altura (X,Y)
         pygame.draw.circle(win, self.color, (x, y), self.radius)
 
+    def attraction(self,other):
+        other_x, other_y =other.x, other.y
+        distance_x = other_x - self.x
+        distance_y = other_y - self.y
+
 def master():
     acerto = True
     clock = pygame.time.Clock()
@@ -50,13 +57,17 @@ def master():
 
     earth = Planet(-1 * Planet.AU, 0, 16, BLUE, 5.9742 * 10**24)
 
-    mars = Planet(-1.524 * Planet.AU, 0, 12, RED, 6.39 * 10**23)
+    earth2 = Planet(-1 * Planet.AU, 0, 12, GREEN, 5.9742 * 10**24)
 
-    mars2 = Planet(-1.524 * Planet.AU, 0, 15, CORN_SILK, 6.39 * 10**23)
+    mars = Planet(-1.524 * Planet.AU, 0, 9, RED, 6.39 * 10**23)
 
-    mercury = Planet(0.387 * Planet.AU, 0, 10, DARK_GOLDEN, 3.30 * 10**23)
+    mars2 = Planet(-1.524 * Planet.AU, 0, 12, CORN_SILK, 6.39 * 10**23)
 
-    planets = [sun, earth, mars2, mercury, mars]
+    mercury = Planet(0.387 * Planet.AU, 0, 8, DARK_GOLDEN, 3.30 * 10**23)
+
+    venus = Planet(0.723 * Planet.AU, 0, 14, WHITE, 4.8685 * 10**24)
+
+    planets = [sun, earth, mars2, mercury, mars, earth2, venus]
 
     while acerto:
         clock.tick(100)
@@ -64,7 +75,7 @@ def master():
         #pygame.display.update()
 
         for event in pygame.event.get():
-            if event.type ==  pygame.QUIT:
+            if event.type ==  pygame.QUIT:#Loop infinito com o intuito de observar as mudanças parado via altf4/X
                 acerto = False
         
         for planet in planets:
